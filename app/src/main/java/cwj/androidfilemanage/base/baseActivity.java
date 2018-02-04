@@ -50,10 +50,10 @@ public abstract class baseActivity extends AppCompatActivity {
 
     public abstract boolean isBindEventBusHere();
 
-    //初始化view
+    // 初始化view
     public abstract void initViewAndEvent();
 
-    //获取布局文件
+    // 获取布局文件
     public abstract int getLayoutId();
 
     @Override

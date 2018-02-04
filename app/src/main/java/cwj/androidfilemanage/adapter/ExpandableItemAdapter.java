@@ -76,7 +76,8 @@ public class ExpandableItemAdapter extends BaseMultiItemQuickAdapter<MultiItemEn
                 if (isPhoto) {
                     Glide.with(mContext).load(f.getFilePath()).into((ImageView) helper.getView(R.id.iv_cover));
                 } else {
-                    Glide.with(mContext).load(FileUtil.getFileTypeImageId(mContext, f.getFilePath())).fitCenter().into((ImageView) helper.getView(R.id.iv_cover));
+                    // Glide.with(mContext).load(FileUtil.getFileTypeImageId(mContext, f.getFilePath())).fitCenter().into((ImageView) helper.getView(R.id.iv_cover));
+                    Glide.with(mContext).load(FileUtil.getFileTypeImageId(mContext, f.getFilePath())).into((ImageView) helper.getView(R.id.iv_cover));
                 }
                 helper.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override

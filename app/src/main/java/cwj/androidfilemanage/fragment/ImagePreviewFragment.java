@@ -11,8 +11,8 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 
 import cwj.androidfilemanage.R;
 import cwj.androidfilemanage.activity.ImagePreviewActivity;
@@ -41,6 +41,17 @@ public class ImagePreviewFragment extends Fragment {
         final ImageView preview_image = (ImageView) contentView.findViewById(R.id.preview_image);
         final PhotoViewAttacher mAttacher = new PhotoViewAttacher(preview_image);
         Glide.with(this)
+                .asBitmap()
+
+                .into(new SimpleTarget<Bitmap>() {
+                    @Override
+                    public void onResourceReady(Bitmap resource, Transition<? super Bitmap> transition) {
+                        preview_image.setImageBitmap(resource);
+                        mAttacher.update();
+                    }
+                });
+
+        /*Glide.with(this)
                 .load(getArguments().getString(PATH))
                 .asBitmap()
                 .fitCenter()
@@ -51,7 +62,7 @@ public class ImagePreviewFragment extends Fragment {
                         preview_image.setImageBitmap(resource);
                         mAttacher.update();
                     }
-                });
+                });*/
         mAttacher.setOnViewTapListener(new PhotoViewAttacher.OnViewTapListener() {
             @Override
             public void onViewTap(View view, float x, float y) {
